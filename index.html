@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HS VAULT</title>
+    <title>HS VAULT | Modern Online Store</title>
 
     <style>
         * {
@@ -16,15 +16,22 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #222;
+            background: #f7f7f7;
+            color: #171717;
         }
 
-        /* NAVBAR */
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        /* ================= NAVBAR ================= */
+
         nav {
             background: #111;
             color: white;
-            padding: 18px 50px;
+            height: 72px;
+            padding: 0 6%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -33,277 +40,660 @@
             z-index: 1000;
         }
 
-        nav h2 {
+        .logo {
             font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 2px;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
+            gap: 28px;
             list-style: none;
-            gap: 30px;
         }
 
-        nav ul li a {
+        .nav-links a {
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: 600;
         }
 
-        nav ul li a:hover {
+        .nav-links a:hover {
             color: #ff9800;
         }
 
-        .cart {
-            cursor: pointer;
-            font-weight: bold;
+        .nav-actions {
+            display: flex;
+            gap: 18px;
+            align-items: center;
         }
 
-        /* HERO */
+        .nav-icon {
+            cursor: pointer;
+            font-size: 20px;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -9px;
+            right: -10px;
+            background: #ff9800;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 11px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ================= HERO ================= */
+
         .hero {
-            min-height: 500px;
-            background: linear-gradient(
-                rgba(0,0,0,0.55),
-                rgba(0,0,0,0.55)
-            ),
-            url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80");
+            min-height: 620px;
+            background:
+                linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.58)),
+                url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=80");
 
             background-size: cover;
             background-position: center;
 
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-
             text-align: center;
             color: white;
             padding: 30px;
         }
 
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero small {
+            color: #ff9800;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
         .hero h1 {
-            font-size: 55px;
-            margin-bottom: 15px;
+            font-size: 65px;
+            margin: 20px 0;
         }
 
         .hero p {
-            font-size: 21px;
-            margin-bottom: 25px;
+            font-size: 19px;
+            line-height: 1.7;
+            color: #eee;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
         }
 
         .btn {
-            padding: 13px 30px;
-            background: #ff9800;
-            color: white;
+            padding: 14px 28px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
             font-weight: bold;
         }
 
-        .btn:hover {
+        .btn-primary {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-primary:hover {
             background: #e68900;
         }
 
-        /* GENERAL */
-        section {
-            padding: 70px 40px;
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 35px;
-            margin-bottom: 40px;
+        .btn-outline:hover {
+            background: white;
+            color: #111;
         }
 
-        /* CATEGORIES */
-        .categories {
-            display: flex;
-            justify-content: center;
+        /* ================= FEATURES ================= */
+
+        .features {
+            background: white;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 30px 7%;
             gap: 20px;
-            flex-wrap: wrap;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .feature-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            font-size: 13px;
+            color: #777;
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            padding: 80px 7%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-header span {
+            color: #ff9800;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .section-header h2 {
+            font-size: 38px;
+            margin-top: 10px;
+        }
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 18px;
         }
 
         .category {
             background: white;
-            width: 180px;
-            padding: 30px 20px;
+            border-radius: 8px;
+            padding: 30px 15px;
             text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             cursor: pointer;
-            transition: 0.3s;
+            transition: .3s;
+            border: 1px solid #eee;
         }
 
         .category:hover {
-            transform: translateY(-5px);
+            transform: translateY(-7px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
         }
 
-        .category .icon {
-            font-size: 45px;
+        .category-icon {
+            font-size: 40px;
             margin-bottom: 15px;
         }
 
         .category h3 {
-            font-size: 18px;
+            font-size: 15px;
         }
 
-        /* PRODUCTS */
-        #products {
-            background: white;
+        /* ================= SHOP ================= */
+
+        #shop {
+            background: #fff;
         }
+
+        .shop-tools {
+            max-width: 1200px;
+            margin: 0 auto 35px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #111;
+            color: white;
+        }
+
+        /* ================= PRODUCTS ================= */
 
         .products {
+            max-width: 1200px;
+            margin: auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 25px;
-            max-width: 1200px;
-            margin: auto;
         }
 
         .product {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
             overflow: hidden;
-            transition: 0.3s;
+            transition: .3s;
+            position: relative;
         }
 
         .product:hover {
             transform: translateY(-6px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 30px rgba(0,0,0,.1);
         }
 
-        .product img {
+        .product-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
             width: 100%;
-            height: 230px;
+            height: 100%;
             object-fit: cover;
+            transition: .4s;
+        }
+
+        .product:hover img {
+            transform: scale(1.06);
+        }
+
+        .sale {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #ff9800;
+            color: white;
+            padding: 6px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+
+        .heart {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
         }
 
         .product-info {
             padding: 18px;
         }
 
-        .product-info h3 {
-            margin-bottom: 10px;
+        .product-category {
+            color: #888;
+            font-size: 12px;
+            text-transform: uppercase;
         }
 
-        .product-info p {
-            color: #666;
+        .product-info h3 {
+            margin: 8px 0;
+            font-size: 17px;
+        }
+
+        .rating {
+            font-size: 13px;
             margin-bottom: 10px;
         }
 
         .price {
-            font-size: 20px;
+            font-size: 19px;
             font-weight: bold;
-            margin-bottom: 15px;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 13px;
+            margin-left: 7px;
         }
 
         .add-cart {
             width: 100%;
+            margin-top: 15px;
             padding: 11px;
             background: #111;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
+            font-weight: bold;
         }
 
         .add-cart:hover {
             background: #ff9800;
         }
 
-        /* ABOUT */
-        #about {
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: #f1f1f1;
             text-align: center;
         }
 
-        #about p {
+        .about-content {
             max-width: 750px;
             margin: auto;
-            line-height: 1.7;
-            font-size: 18px;
-            color: #555;
         }
 
-        /* CONTACT */
-        #contact {
-            background: #eee;
+        .about p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 17px;
         }
 
-        form {
-            max-width: 600px;
+        /* ================= NEWSLETTER ================= */
+
+        .newsletter {
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter p {
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        .newsletter-form {
+            max-width: 550px;
+            margin: auto;
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 14px 25px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact-form {
+            max-width: 650px;
             margin: auto;
         }
 
-        form input,
-        form textarea {
+        .contact-form input,
+        .contact-form textarea {
             width: 100%;
-            padding: 13px;
+            padding: 14px;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 5px;
+            outline: none;
         }
 
-        form textarea {
+        .contact-form textarea {
             height: 130px;
             resize: none;
         }
 
-        form button {
+        .contact-form button {
             width: 100%;
         }
 
-        /* FOOTER */
+        /* ================= FOOTER ================= */
+
         footer {
-            background: #111;
+            background: #0b0b0b;
             color: white;
+            padding: 60px 7% 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 18px;
+        }
+
+        .footer-column p {
+            color: #aaa;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 20px;
             text-align: center;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* ================= CART ================= */
+
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            box-shadow: -5px 0 20px rgba(0,0,0,.15);
+            transition: .3s;
             padding: 25px;
         }
 
-        /* MOBILE */
-        @media (max-width: 900px) {
+        .cart-panel.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 18px;
+            margin-bottom: 20px;
+        }
+
+        .close-cart {
+            border: none;
+            background: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .remove-item {
+            border: none;
+            background: none;
+            color: red;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 1000px) {
 
             .products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .categories {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
 
             nav {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
+                padding: 0 20px;
             }
 
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .nav-links {
+                display: none;
             }
 
             .hero h1 {
-                font-size: 38px;
+                font-size: 42px;
             }
 
-            .hero p {
-                font-size: 18px;
+            .shop-tools {
+                flex-direction: column;
             }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .cart-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+        }
+
+        @media (max-width: 450px) {
 
             section {
-                padding: 50px 20px;
+                padding: 60px 20px;
             }
 
             .products {
                 grid-template-columns: 1fr;
             }
 
-            .category {
-                width: 140px;
+            .features {
+                grid-template-columns: 1fr;
             }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
         }
     </style>
 </head>
@@ -311,73 +701,166 @@
 <body>
 
     <!-- NAVBAR -->
+
     <nav>
 
-        <h2>HS VAULT</h2>
+        <div class="logo">
+            HS VAULT
+        </div>
 
-        <ul>
+        <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#categories">Categories</a></li>
-            <li><a href="#products">Shop</a></li>
+            <li><a href="#shop">Shop</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <div class="cart">
-            🛒 Cart: <span id="cartCount">0</span>
+        <div class="nav-actions">
+
+            <div class="nav-icon">
+                🔍
+            </div>
+
+            <div class="nav-icon">
+                ❤️
+            </div>
+
+            <div
+                class="nav-icon"
+                onclick="openCart()"
+            >
+                🛒
+
+                <span
+                    class="cart-count"
+                    id="cartCount"
+                >
+                    0
+                </span>
+
+            </div>
+
         </div>
 
     </nav>
 
 
     <!-- HERO -->
-    <section class="hero" id="home">
 
-        <h1>Welcome to HS VAULT</h1>
+    <section
+        class="hero"
+        id="home"
+    >
 
-        <p>Everything You Need, All in One Place.</p>
+        <div class="hero-content">
 
-        <button class="btn" onclick="goToShop()">
-            Shop Now
-        </button>
+            <small>WELCOME TO HS VAULT</small>
+
+            <h1>
+                Everything You Need.
+            </h1>
+
+            <p>
+                Discover premium fashion, watches, perfumes,
+                shoes, electronics and accessories — all in one place.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="btn btn-primary"
+                    onclick="goToShop()"
+                >
+                    Shop Now
+                </button>
+
+                <button
+                    class="btn btn-outline"
+                    onclick="goToCategories()"
+                >
+                    Explore Categories
+                </button>
+
+            </div>
+
+        </div>
 
     </section>
 
 
+    <!-- FEATURES -->
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">🚚</div>
+            <h3>Fast Delivery</h3>
+            <p>Quick delivery to your doorstep.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <h3>Secure Shopping</h3>
+            <p>Your information stays protected.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">💳</div>
+            <h3>Easy Payments</h3>
+            <p>Simple and convenient checkout.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">⭐</div>
+            <h3>Quality Products</h3>
+            <p>Products selected with care.</p>
+        </div>
+
+    </div>
+
+
     <!-- CATEGORIES -->
+
     <section id="categories">
 
-        <h2 class="section-title">Shop By Category</h2>
+        <div class="section-header">
+
+            <span>EXPLORE</span>
+
+            <h2>Shop By Category</h2>
+
+        </div>
 
         <div class="categories">
 
             <div class="category">
-                <div class="icon">👕</div>
+                <div class="category-icon">👕</div>
                 <h3>Clothing</h3>
             </div>
 
             <div class="category">
-                <div class="icon">⌚</div>
+                <div class="category-icon">⌚</div>
                 <h3>Watches</h3>
             </div>
 
             <div class="category">
-                <div class="icon">🌸</div>
+                <div class="category-icon">🌸</div>
                 <h3>Perfumes</h3>
             </div>
 
             <div class="category">
-                <div class="icon">👟</div>
+                <div class="category-icon">👟</div>
                 <h3>Shoes</h3>
             </div>
 
             <div class="category">
-                <div class="icon">🎧</div>
+                <div class="category-icon">🎧</div>
                 <h3>Electronics</h3>
             </div>
 
             <div class="category">
-                <div class="icon">🎒</div>
+                <div class="category-icon">🎒</div>
                 <h3>Accessories</h3>
             </div>
 
@@ -386,32 +869,127 @@
     </section>
 
 
-    <!-- PRODUCTS -->
-    <section id="products">
+    <!-- SHOP -->
 
-        <h2 class="section-title">Featured Products</h2>
+    <section id="shop">
+
+        <div class="section-header">
+
+            <span>OUR COLLECTION</span>
+
+            <h2>Featured Products</h2>
+
+        </div>
+
+
+        <div class="shop-tools">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search products..."
+                    onkeyup="searchProducts()"
+                >
+
+            </div>
+
+
+            <div class="filter-buttons">
+
+                <button
+                    class="filter-btn active"
+                    onclick="filterProducts('all')"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterProducts('clothing')"
+                >
+                    Clothing
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterProducts('watches')"
+                >
+                    Watches
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterProducts('perfumes')"
+                >
+                    Perfumes
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterProducts('shoes')"
+                >
+                    Shoes
+                </button>
+
+            </div>
+
+        </div>
+
 
         <div class="products">
 
-            <!-- PRODUCT 1 -->
-            <div class="product">
 
-                <img
-                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80"
-                    alt="T-Shirt"
-                >
+            <!-- PRODUCT 1 -->
+
+            <div
+                class="product"
+                data-category="clothing"
+                data-name="Premium T-Shirt"
+            >
+
+                <div class="product-image">
+
+                    <span class="sale">
+                        SALE
+                    </span>
+
+                    <button class="heart">
+                        ♡
+                    </button>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80"
+                        alt="Premium T-Shirt"
+                    >
+
+                </div>
 
                 <div class="product-info">
 
-                    <h3>Premium T-Shirt</h3>
+                    <span class="product-category">
+                        Clothing
+                    </span>
 
-                    <p>Comfortable cotton t-shirt.</p>
+                    <h3>
+                        Premium T-Shirt
+                    </h3>
 
-                    <div class="price">Rs. 1,499</div>
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+
+                    <div class="price">
+                        Rs. 1,499
+                        <span class="old-price">
+                            Rs. 1,999
+                        </span>
+                    </div>
 
                     <button
                         class="add-cart"
-                        onclick="addToCart('Premium T-Shirt', 1499)"
+                        onclick="addToCart('Premium T-Shirt',1499)"
                     >
                         Add to Cart
                     </button>
@@ -422,24 +1000,54 @@
 
 
             <!-- PRODUCT 2 -->
-            <div class="product">
 
-                <img
-                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80"
-                    alt="Watch"
-                >
+            <div
+                class="product"
+                data-category="watches"
+                data-name="Classic Watch"
+            >
+
+                <div class="product-image">
+
+                    <span class="sale">
+                        -20%
+                    </span>
+
+                    <button class="heart">
+                        ♡
+                    </button>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80"
+                        alt="Classic Watch"
+                    >
+
+                </div>
 
                 <div class="product-info">
 
-                    <h3>Classic Watch</h3>
+                    <span class="product-category">
+                        Watches
+                    </span>
 
-                    <p>Elegant everyday watch.</p>
+                    <h3>
+                        Classic Watch
+                    </h3>
 
-                    <div class="price">Rs. 2,999</div>
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+
+                    <div class="price">
+                        Rs. 2,999
+                        <span class="old-price">
+                            Rs. 3,799
+                        </span>
+                    </div>
 
                     <button
                         class="add-cart"
-                        onclick="addToCart('Classic Watch', 2999)"
+                        onclick="addToCart('Classic Watch',2999)"
                     >
                         Add to Cart
                     </button>
@@ -450,24 +1058,51 @@
 
 
             <!-- PRODUCT 3 -->
-            <div class="product">
 
-                <img
-                    src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80"
-                    alt="Perfume"
-                >
+            <div
+                class="product"
+                data-category="perfumes"
+                data-name="Luxury Perfume"
+            >
+
+                <div class="product-image">
+
+                    <span class="sale">
+                        NEW
+                    </span>
+
+                    <button class="heart">
+                        ♡
+                    </button>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80"
+                        alt="Luxury Perfume"
+                    >
+
+                </div>
 
                 <div class="product-info">
 
-                    <h3>Luxury Perfume</h3>
+                    <span class="product-category">
+                        Perfumes
+                    </span>
 
-                    <p>Fresh and long-lasting fragrance.</p>
+                    <h3>
+                        Luxury Perfume
+                    </h3>
 
-                    <div class="price">Rs. 3,499</div>
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+
+                    <div class="price">
+                        Rs. 3,499
+                    </div>
 
                     <button
                         class="add-cart"
-                        onclick="addToCart('Luxury Perfume', 3499)"
+                        onclick="addToCart('Luxury Perfume',3499)"
                     >
                         Add to Cart
                     </button>
@@ -478,24 +1113,54 @@
 
 
             <!-- PRODUCT 4 -->
-            <div class="product">
 
-                <img
-                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
-                    alt="Shoes"
-                >
+            <div
+                class="product"
+                data-category="shoes"
+                data-name="Casual Sneakers"
+            >
+
+                <div class="product-image">
+
+                    <span class="sale">
+                        SALE
+                    </span>
+
+                    <button class="heart">
+                        ♡
+                    </button>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+                        alt="Casual Sneakers"
+                    >
+
+                </div>
 
                 <div class="product-info">
 
-                    <h3>Casual Sneakers</h3>
+                    <span class="product-category">
+                        Shoes
+                    </span>
 
-                    <p>Comfortable sneakers for daily use.</p>
+                    <h3>
+                        Casual Sneakers
+                    </h3>
 
-                    <div class="price">Rs. 4,999</div>
+                    <div class="rating">
+                        ⭐⭐⭐⭐☆
+                    </div>
+
+                    <div class="price">
+                        Rs. 4,999
+                        <span class="old-price">
+                            Rs. 5,999
+                        </span>
+                    </div>
 
                     <button
                         class="add-cart"
-                        onclick="addToCart('Casual Sneakers', 4999)"
+                        onclick="addToCart('Casual Sneakers',4999)"
                     >
                         Add to Cart
                     </button>
@@ -510,25 +1175,83 @@
 
 
     <!-- ABOUT -->
-    <section id="about">
 
-        <h2 class="section-title">About HS VAULT</h2>
+    <section
+        class="about"
+        id="about"
+    >
+
+        <div class="section-header">
+
+            <span>ABOUT US</span>
+
+            <h2>Why HS VAULT?</h2>
+
+        </div>
+
+        <div class="about-content">
+
+            <p>
+                HS VAULT is a modern online shopping platform
+                designed to bring fashion, lifestyle and everyday
+                essentials together in one convenient place.
+                Our goal is to provide a clean, simple and enjoyable
+                shopping experience.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter">
+
+        <h2>
+            Stay In The Loop
+        </h2>
 
         <p>
-            HS VAULT is a modern online marketplace where you can
-            discover clothing, watches, perfumes, shoes, electronics
-            and accessories — all in one place.
+            Subscribe for new arrivals and special offers.
         </p>
+
+        <form
+            class="newsletter-form"
+            onsubmit="subscribeUser(event)"
+        >
+
+            <input
+                type="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
 
     </section>
 
 
     <!-- CONTACT -->
+
     <section id="contact">
 
-        <h2 class="section-title">Contact Us</h2>
+        <div class="section-header">
 
-        <form id="contactForm">
+            <span>GET IN TOUCH</span>
+
+            <h2>Contact Us</h2>
+
+        </div>
+
+        <form
+            class="contact-form"
+            onsubmit="sendMessage(event)"
+        >
 
             <input
                 type="text"
@@ -547,7 +1270,10 @@
                 required
             ></textarea>
 
-            <button class="btn" type="submit">
+            <button
+                class="btn btn-primary"
+                type="submit"
+            >
                 Send Message
             </button>
 
@@ -557,53 +1283,400 @@
 
 
     <!-- FOOTER -->
+
     <footer>
 
-        <p>© 2026 HS VAULT. All Rights Reserved.</p>
+        <div class="footer-grid">
+
+            <div class="footer-column">
+
+                <h3>
+                    HS VAULT
+                </h3>
+
+                <p>
+                    Your modern destination for fashion,
+                    lifestyle and everyday essentials.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#shop">Shop</a>
+                    </li>
+
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Categories
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#shop">Clothing</a>
+                    </li>
+
+                    <li>
+                        <a href="#shop">Watches</a>
+                    </li>
+
+                    <li>
+                        <a href="#shop">Perfumes</a>
+                    </li>
+
+                    <li>
+                        <a href="#shop">Shoes</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Contact
+                </h3>
+
+                <p>
+                    Karachi, Pakistan
+                </p>
+
+                <p>
+                    hello@hsvault.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 HS VAULT. All Rights Reserved.
+
+        </div>
 
     </footer>
 
 
+    <!-- CART -->
+
+    <div
+        class="cart-panel"
+        id="cartPanel"
+    >
+
+        <div class="cart-header">
+
+            <h2>
+                Your Cart
+            </h2>
+
+            <button
+                class="close-cart"
+                onclick="closeCart()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="cartItems"
+        >
+
+            <p>
+                Your cart is empty.
+            </p>
+
+        </div>
+
+
+        <div class="cart-total">
+
+            <span>
+                Total
+            </span>
+
+            <span id="cartTotal">
+                Rs. 0
+            </span>
+
+        </div>
+
+    </div>
+
+
     <!-- JAVASCRIPT -->
+
     <script>
 
-        let cartCount = 0;
+        let cart = [];
 
 
-        // ADD TO CART
-        function addToCart(productName, price) {
+        /* ================= CART ================= */
 
-            cartCount++;
+        function addToCart(name, price) {
 
-            document.getElementById("cartCount").textContent = cartCount;
+            cart.push({
+                name: name,
+                price: price
+            });
 
-            alert(productName + " added to cart!");
+            updateCart();
+
+            alert(name + " added to cart!");
+
         }
 
 
-        // SHOP NOW
+        function updateCart() {
+
+            document.getElementById("cartCount").textContent =
+                cart.length;
+
+
+            const cartItems =
+                document.getElementById("cartItems");
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML =
+                    "<p>Your cart is empty.</p>";
+
+                document.getElementById("cartTotal").textContent =
+                    "Rs. 0";
+
+                return;
+
+            }
+
+
+            let total = 0;
+
+            cartItems.innerHTML = "";
+
+
+            cart.forEach(function(item, index) {
+
+                total += item.price;
+
+                cartItems.innerHTML += `
+
+                    <div class="cart-item">
+
+                        <div>
+
+                            <strong>
+                                ${item.name}
+                            </strong>
+
+                            <br>
+
+                            Rs. ${item.price}
+
+                        </div>
+
+                        <button
+                            class="remove-item"
+                            onclick="removeFromCart(${index})"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            document.getElementById("cartTotal").textContent =
+                "Rs. " + total;
+
+        }
+
+
+        function removeFromCart(index) {
+
+            cart.splice(index, 1);
+
+            updateCart();
+
+        }
+
+
+        function openCart() {
+
+            document
+                .getElementById("cartPanel")
+                .classList
+                .add("open");
+
+        }
+
+
+        function closeCart() {
+
+            document
+                .getElementById("cartPanel")
+                .classList
+                .remove("open");
+
+        }
+
+
+        /* ================= SHOP ================= */
+
         function goToShop() {
 
-            document.getElementById("products").scrollIntoView({
-                behavior: "smooth"
+            document
+                .getElementById("shop")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        function goToCategories() {
+
+            document
+                .getElementById("categories")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        /* ================= SEARCH ================= */
+
+        function searchProducts() {
+
+            let search =
+                document
+                    .getElementById("searchInput")
+                    .value
+                    .toLowerCase();
+
+
+            let products =
+                document.querySelectorAll(".product");
+
+
+            products.forEach(function(product) {
+
+                let name =
+                    product
+                        .dataset
+                        .name
+                        .toLowerCase();
+
+
+                if (name.includes(search)) {
+
+                    product.style.display = "";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
             });
 
         }
 
 
-        // CONTACT FORM
-        document.getElementById("contactForm").addEventListener(
-            "submit",
-            function(event) {
+        /* ================= FILTER ================= */
 
-                event.preventDefault();
+        function filterProducts(category) {
 
-                alert("Thank you! Your message has been sent.");
+            let products =
+                document.querySelectorAll(".product");
 
-                this.reset();
 
-            }
-        );
+            products.forEach(function(product) {
+
+                if (
+                    category === "all" ||
+                    product.dataset.category === category
+                ) {
+
+                    product.style.display = "";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        /* ================= NEWSLETTER ================= */
+
+        function subscribeUser(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Thank you for subscribing to HS VAULT!"
+            );
+
+            event.target.reset();
+
+        }
+
+
+        /* ================= CONTACT ================= */
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Thank you! Your message has been received."
+            );
+
+            event.target.reset();
+
+        }
 
     </script>
 
